@@ -1,0 +1,45 @@
+﻿@{
+    ViewData["Title"] = "Index";
+}
+@using Sol_Input_UI.Models.CheckBoxList
+@model Sol_Input_UI.ViewModel.CheckBoxListViewModel
+
+<h1>Index</h1>
+<form asp-controller="CheckBoxListDemo" asp-action="OnSubmit">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="form-check">
+                    @for (int counter = 0; counter < Model.CategoryList.Count; counter++)
+                    {
+                        <input asp-for="@Model.CategoryList[counter].SelectedCheckBox" type="checkbox" />
+                        <label asp-for="@Model.CategoryList[counter].CategoryId">@Model.CategoryList[counter].CategoryName</label>
+                        <input asp-for="@Model.CategoryList[counter].CategoryId" type="hidden" />
+                        <input asp-for="@Model.CategoryList[counter].CategoryName" type="hidden" />
+                        <br />
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <input id="btnSubmit" type="submit" class="btn btn-primary" value="Submit" />
+
+                @if (ViewBag?.Data != null)
+                {
+                    var categorySelectedCheckBoxData =
+                        ((ViewBag.Data) as List<CategoryModel>)
+                        ?.AsEnumerable()
+                        ?.Where((leCategoryModel) => leCategoryModel.SelectedCheckBox == true)
+                        ?.ToList();
+
+                    @foreach (var categoryModel in categorySelectedCheckBoxData)
+                    {
+                        <label>@categoryModel.CategoryName</label>
+                        <br />
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</form>

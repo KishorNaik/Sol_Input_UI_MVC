@@ -1,0 +1,29 @@
+﻿@{
+    ViewData["Title"] = "Index";
+}
+
+@model Sol_Input_UI.ViewModel.UserViewModel
+
+<form asp-controller="TextBoxDemo" asp-action="OnSubmit">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="form-group">
+                    <label for="txtFirstName">First Name</label>
+                    <input id="txtFirstName" type="text" asp-for="Users.FirstName" class="form-control" />
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="form-group">
+                    <label for="txtLastName">Last Name</label>
+                    <input id="txtLastName" type="text" asp-for="Users.LastName" class="form-control" />
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="form-group">
+                    <input id="btnSubmit" type="submit" class="btn btn-primary" />
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

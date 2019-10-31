@@ -1,0 +1,69 @@
+﻿@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+<form>
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <div class="buttons">
+                    <div class="upload-button">
+                        <div class="label">Click me!</div>
+                        <input id="files" name="files" type="file" size="1" multiple onchange="uploadFiles('files');" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <a id="fileDownload" class="btn btn-primary" href="@ViewBag.Path">Download</a>
+            </div>
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+
+    <script type="text/javascript">
+
+        function uploadFiles(inputId) {
+            var input = document.getElementById(inputId);
+            var files = input.files;
+            var formData = new FormData();
+
+            for (var i = 0; i != files.length; i++) {
+                formData.append("files", files[i]);
+            }
+
+            $.ajax(
+                {
+                    url: '@Url.Action("OnSubmit","FileUploadDemo")',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    type: "POST",
+                    success: function (data) {
+                        alert("Files Uploaded!");
+                    }
+                }
+            );
+        }
+
+        $('#fileDownload').click(function(e) {
+                //e.preventDefault();  //stop the browser from following
+            //var path = $("#fileDownload").data("url");
+            //console.log(path);
+            //window.location.href = path;
+
+            e.preventDefault();
+
+            //open download link in new page
+            window.open( $(this).attr("href") );
+
+            //redirect current page to success page
+            window.location.href = "http://localhost:52340/ThankYouDownload.html";
+            window.focus();
+
+        });
+    </script>
+
+}

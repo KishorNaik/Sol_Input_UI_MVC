@@ -1,0 +1,14 @@
+﻿@*is Ajax Request?*@
+@if (Context.Request.Headers["x-requested-with"] == "XMLHttpRequest")
+{
+
+    // If you want to Execute Child Content only then use SPA Layout (Without sending data from child to parent)
+    //Layout = "~/Views/Shared/_SpaLayout.cshtml";
+
+    // If you want to send data from Child conetnt to Parent Layout then use _Layout
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+else
+{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}

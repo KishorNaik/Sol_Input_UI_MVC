@@ -1,0 +1,52 @@
+﻿@{
+    ViewData["Title"] = "Index";
+}
+
+@model Sol_Input_UI.ViewModel.DropDownDemoViewModel
+
+<h1>Index</h1>
+
+@*<form asp-controller="DropDownDemo" asp-action="OnSubmit">*@
+<form id="frmMain" method="post">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="form-group">
+                    <select id="ddlCountry" asp-for="DropDownDemo.CountryId" asp-items="@Model.ListDropDownDemo" class="form-control">
+                        <option>Select Option</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <input id="btnSubmit" type="submit" class="btn btn-primary" value="On Click Get Value" onclick="onSubmitGetValue(); return false;" />
+                <h2>@ViewBag.CountryName</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <input id="btnSet" type="submit" class="btn btn-primary" value="On Click Set Value" onclick="onSubmitSetDropDownValue(); return false;" />
+            </div>
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+
+    <script type="text/javascript">
+
+        function onSubmitGetValue() {
+            console.log("On Submit Get Value");
+            $("#frmMain").attr("action", '@Url.Action("OnSubmit","DropDownDemo")');
+            $("#frmMain").submit();
+        }
+
+        function onSubmitSetDropDownValue() {
+            console.log("On Submit Set a Value");
+            $("#frmMain").attr("action", '@Url.Action("OnSetDropDown","DropDownDemo")');
+            $("#frmMain").submit();
+        }
+    </script>
+
+}

@@ -1,0 +1,36 @@
+﻿@{
+    ViewData["Title"] = "Index";
+}
+
+@model Sol_Input_UI.ViewModel.RadioButtonViewModel
+
+<h1>Index</h1>
+
+<form asp-controller="RadioButtonDemo" asp-action="OnSubmit">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="form-check">
+                    @{
+
+                        for (int counter = 0; counter < Model.ListCategory.Count; counter++)
+                        {
+                            <input id="rbCategory" type="radio" asp-for="Category.CategoryId" value="@Model.ListCategory[counter].CategoryId" />
+                            <label asp-for="@Model.ListCategory[counter].CategoryId">@Model.ListCategory[counter].CategoryName</label>
+                            <input type="hidden" asp-for="@Model.ListCategory[counter].CategoryId" />
+                            <br />
+                        }
+
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <input id="btnSubmit" type="submit" class="btn btn-primary" value="Submit" />
+
+                <h2>@ViewBag.Data</h2>
+            </div>
+        </div>
+    </div>
+</form>

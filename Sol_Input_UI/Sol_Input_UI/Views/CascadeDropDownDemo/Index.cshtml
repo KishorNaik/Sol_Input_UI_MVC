@@ -1,0 +1,66 @@
+﻿@{
+    ViewData["Title"] = "Index";
+}
+
+@model Sol_Input_UI.ViewModel.CascadeDropdownViewModel
+
+<h1>Index</h1>
+
+<form id="frmMain" method="post">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="form-group">
+                    <select id="ddlCountry" class="form-control" asp-for="Country.CountryId" asp-items="@Model.ListCountry" onchange="onCountrySelectChange(); return false;">
+                        <option>Select Country</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <div class="form-group">
+                    <select id="ddlCity" class="form-control" asp-for="City.CityId" asp-items="@Model.ListCity" onchange="onCitySelectChnage(); return false;">
+                        <option>Select City</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <div class="form-group">
+                    <select id="ddlLocation" class="form-control" asp-for="Location.LocationId" asp-items="@Model.ListLocation">
+                        <option>Select Location</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <div class="form-group">
+                    <input id="btnSubmit" class="btn btn-primary" value="Submit" />
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+
+    <script type="text/javascript">
+
+        function onCountrySelectChange() {
+            $("#frmMain").attr("action", '@Url.Action("OnCountryChange","CascadeDropDownDemo")');
+            $("#frmMain").submit();
+        }
+
+        function onCitySelectChnage() {
+            $("#frmMain").attr("action", '@Url.Action("onCityChange","CascadeDropDownDemo")');
+            $("#frmMain").submit();
+        }
+    </script>
+
+}
