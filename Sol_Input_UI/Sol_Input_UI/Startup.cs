@@ -64,7 +64,7 @@ namespace Sol_Input_UI
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=FileUploadDemo}/{action=Index}/{id?}");
+                    template: "{controller=JqueryDataTable}/{action=Index}/{id?}");
             });
         }
     }
