@@ -119,13 +119,6 @@ namespace Sol_Input_UI.Controllers
 
                     customerList.Add(new CustomerModel()
                     {
-                        customerId = 14,
-                        firstName = "Rajshree",
-                        lastName = "Mhatre"
-                    });
-
-                    customerList.Add(new CustomerModel()
-                    {
                         customerId = 15,
                         firstName = "Sonal",
                         lastName = "Joshi"

@@ -24,7 +24,7 @@ namespace Sol_Input_UI.Controllers
 
         public IActionResult Index()
         {
-            ViewBag.Path = "http://localhost:52340/Files/Google_Adwards_Sep_2019.pdf";
+            ViewBag.Path = "http://localhost:55505/Files/Google_Adwards_Sep_2019.pdf";
 
             return View();
         }
